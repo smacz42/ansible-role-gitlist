@@ -1,33 +1,43 @@
-# Ansible Role: BLANK
-
-[![Build Status](http://img.shields.io/travis/Stouts/Stouts.mongodb.svg?style=flat-square)](https://travis-ci.org/Stouts/Stouts.mongodb)
-[![Galaxy](http://img.shields.io/badge/galaxy-Stouts.mongodb-blue.svg?style=flat-square)](https://galaxy.ansible.com/list#/roles/982)
+# Ansible Role: gitlist
 
 ## Description
 
+Installs gitlist onto a CentOS 7 box and downloads a handful of my github repos for good measure.
+
+Is not a login of any type - can only clone (if you have `ssh` access to the box) using:
+
+```
+$ git clone <user>@<host>:/srv/repos/<repo-name>
+```
+
 ### Requirements
 
-*
+* git repos in `/srv/roles/`
+* `httpd` root in `/srv/httpd`
 
 ### Dependencies
 
+* `ansible-role-common`
+* `ansible-role-iptables`
+* `ansible-role-httpd`
+
 ## Role Variables
 
-```yaml
-variable: value # comment
-```
-
-
+See: `defaults/main.yml`
 
 ## Example Playbook
 
-```yaml
-- name: BLANK
+```
+- name: Roles in Common
   hosts: all
   gather_facts: yes
+  no_log: true
 
   roles:
-    - { role: blank }
+    - { role: common }
+    - { role: iptables }
+    - { role: httpd }
+    - { role: gitlist }
 ```
 
 ## License
