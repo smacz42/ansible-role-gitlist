@@ -1,0 +1,41 @@
+---
+
+################################################################################### CHANGE ME
+
+# Path to your repositories
+# If you wish to add more repositories, just add a new line
+# Do include the ending slash
+gitlist_repo_dirs: '/srv/repos'
+
+# Base URL of the application
+# Do not include the ending slash
+gitlist_baseurl: 'https://andrewcz.com/gitlist'
+
+# set the timezone
+gitlist_timezone: UTC
+gitlist_time_format: 'd/m/Y H:i:s'
+
+httpd_DocumentRoot: '/srv/httpd'
+gitlist_root_dir: "{{ httpd_DocumentRoot }}/gitlist"
+httpd_RewriteBase: '/gitlist/'
+
+gitlist_version: '0.5.0'
+httpd_webservice: gitlist
+
+################################################################################### SANE DEFAULTS
+
+# Your git executable path
+gitlist_git_executable: /usr/bin/git
+
+# Default branch when HEAD is detached
+gitlist_default_branch: master
+
+# You can hide repositories from GitList,
+# just copy this for each repository you want to hide
+gitlist_hidden_repo_dirs: ''
+
+# App settings
+
+gitlist_debug: false
+gitlist_cache: true
+gitlist_theme: default

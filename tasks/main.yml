@@ -1,0 +1,8 @@
+---
+# Tasks for BLANK
+
+- include: gitlist_install.yml
+  tags: [gitlist,gitlist_install,install]
+
+- include: gitlist_config.yml
+  tags: [gitlist,gitlist_config,config]

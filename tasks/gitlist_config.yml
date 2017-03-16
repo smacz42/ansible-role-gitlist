@@ -1,0 +1,35 @@
+---
+# gitlist_config.yml
+
+- name: (gitlist_config) [1/2] Template config.ini is deployed
+  template:
+    src: ../templates/config.ini.j2
+    dest: "{{ gitlist_root_dir }}/config.ini"
+    owner: apache
+    group: apache
+    mode: 0440
+  notify: Restart httpd
+
+- name: (gitlist_config) [2/2] Template htaccess is deployed
+  template:
+    src: ../templates/htaccess.j2
+    dest: "{{ gitlist_root_dir }}/.htaccess"
+    owner: apache
+    group: apache
+    mode: 0440
+  notify: Restart httpd
+
+- name: (gitlist_config) [3/3] Default Git repos are present
+  git:
+    repo: https://github.com/smacz42/{{ item }}
+    dest: /srv/repos/{{ item }}
+    remote: home
+  with_items:
+    - ansible-role-squid
+    - ansible-role-znc
+    - ansible-role-postfix-server
+    - ansible-role-mysql
+    - ansible-role-jekyll
+    - ansible-role-httpd
+    - ansible-role-dovecot
+    - ansible-role-common

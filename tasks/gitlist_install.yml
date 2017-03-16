@@ -1,0 +1,34 @@
+---
+# gitlist_install.yml
+
+- name: (gitlist_install) [1/4] Packages for Gitlist are installed
+  package:
+    name: php
+
+- name: (gitlist_install) [3/4] Gitlist dirs are present and have correct permissions
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: apache
+    group: apache
+    recurse: yes
+  with_items:
+    - "{{ gitlist_repo_dirs }}"
+    - "{{ gitlist_root_dir }}"
+    #- "{{ gitlist_hidden_repo_dirs }}"
+
+- name: (gitlist_install) [2/4] Unarchive retrieved gitlist tarball
+  unarchive:
+    src: https://s3.amazonaws.com/gitlist/gitlist-{{ gitlist_version }}.tar.gz
+    dest: "{{ httpd_DocumentRoot }}"
+    owner: apache
+    group: apache
+    remote_src: True
+
+- name: (gitlist_install) [4/4] Cache dir is present and has correct permissions
+  file:
+    path: "{{ gitlist_root_dir }}/cache/"
+    state: directory
+    owner: apache
+    group: apache
+    mode: 0744

@@ -1,0 +1,15 @@
+[git]
+client = '{{ gitlist_git_executable }}'
+default_branch = '{{ gitlist_default_branch }}'
+repositories[] = '{{ gitlist_repo_dirs }}'
+hidden[] = '{{ gitlist_hidden_repo_dirs }}'
+
+[app]
+baseurl = '{{ gitlist_baseurl }}'
+debug = {{ gitlist_debug }}
+cache = {{ gitlist_cache }}
+theme = "{{ gitlist_theme }}"
+
+[date]
+timezone = {{ gitlist_timezone }}
+format = '{{ gitlist_time_format }}'
