@@ -2,7 +2,7 @@
     Options -MultiViews +SymLinksIfOwnerMatch
 
     RewriteEngine On
-    #RewriteBase {{ httpd_RewriteBase }}
+    RewriteBase {{ httpd_RewriteBase }}
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php/$1 [L,NC]
