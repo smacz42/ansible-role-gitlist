@@ -38,4 +38,4 @@ gitlist_hidden_repo_dirs: ''
 
 gitlist_debug: false
 gitlist_cache: true
-gitlist_theme: default
+gitlist_theme: andrewcz

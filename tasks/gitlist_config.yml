@@ -20,12 +20,9 @@
   notify: Restart httpd
 
 - name: (gitlist_config) [3/4] Theme files are deployed
-  rsync:
+  synchronize:
     src: ../files/andrewcz
     dest: "{{ gitlist_root_dir }}/themes/"
-    owner: apache
-    group: apache
-    mode: 0440
 
 - name: (gitlist_config) [4/4] Default Git repos are present
   git:
