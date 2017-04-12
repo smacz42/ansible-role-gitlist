@@ -59,3 +59,8 @@ if ($('#branchList').length) {
 $('.search').click(function (e) {
     e.stopPropagation();
 });
+
+$('.md-view').each( function() {
+    var converter = new Showdown.converter({extensions: ['table']});
+    $(this).html(converter.makeHtml($(this).text()));
+});

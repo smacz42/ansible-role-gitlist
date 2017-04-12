@@ -21,7 +21,7 @@
         <center><img src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}" alt="{{ file }}" class="image-blob" /></center>
 
         {% elseif fileType == 'markdown' %}
-        <div class="md-view"><div id="md-content">{{ blob }}</div></div>
+        <div id="md-content" class="md-view">{{ blob }}</div>
 
         {% else %}
         <pre id="sourcecode" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
